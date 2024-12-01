@@ -2,15 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   @apply antialiased text-gray-900;
 }
 
-/* Add proper scroll margin for sections */
-section[id] {
-  scroll-margin-top: 96px; /* Increased from 6rem to account for the navbar height */
+html {
+  scroll-behavior: smooth !important;
+  scroll-padding-top: 96px;
+}
+
+section {
+  scroll-margin-top: 96px;
+}
+
+#home {
+  min-height: 100vh;
+}
+
+section:not(#home) {
+  min-height: calc(100vh - 96px);
+}
+
+.scroll-smooth {
+  scroll-behavior: smooth;
 }

@@ -2,13 +2,8 @@ import React from 'react';
 import { ArrowRight } from 'lucide-react';
 
 export function Hero() {
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const APPRAISER_SIGNUP = "https://avaluamc.spurams.com/AppraiserSelfRegistration.aspx";
+  const CLIENT_PORTAL = "https://avaluamc.spurams.com/ClientSelfRegistration.aspx";
 
   return (
     <section id="home" className="relative min-h-screen">
@@ -37,19 +32,22 @@ export function Hero() {
         </p>
         <div className="mt-10 flex justify-center gap-x-6">
           <a
-            href="#contact"
-            onClick={(e) => scrollToSection(e, 'contact')}
-            className="group inline-flex items-center justify-center rounded-full bg-primary py-3 px-6 text-sm font-semibold text-white hover:bg-primary/90 active:bg-primary/80 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            href={APPRAISER_SIGNUP}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center justify-center rounded-full border border-white py-3 px-6 text-sm font-semibold text-white hover:bg-white/10 active:bg-white/20 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
-            Get Started
+            Appraiser Registration
             <ArrowRight className="ml-2 h-4 w-4" />
           </a>
           <a
-            href="#services"
-            onClick={(e) => scrollToSection(e, 'services')}
-            className="group inline-flex items-center justify-center rounded-full border border-white py-3 px-6 text-sm font-semibold text-white hover:bg-white/10 active:bg-white/20 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            href={CLIENT_PORTAL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center justify-center rounded-full bg-primary py-3 px-6 text-sm font-semibold text-white hover:bg-primary/90 active:bg-primary/80 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
           >
-            Our Services
+            Client Portal
+            <ArrowRight className="ml-2 h-4 w-4" />
           </a>
         </div>
       </div>
