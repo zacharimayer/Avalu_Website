@@ -1,133 +1,35 @@
-import React, { FormEvent, useState } from 'react';
-import { Mail } from 'lucide-react';
-import emailjs from '@emailjs/browser';
-import toast, { Toaster } from 'react-hot-toast';
+import React from 'react';
+import { Mail, Phone } from 'lucide-react';
 
 export function Contact() {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      await emailjs.send(
-        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
-        {
-          from_name: `${formData.firstName} ${formData.lastName}`,
-          from_email: formData.email,
-          message: formData.message,
-          to_email: 'contact@avaluamc.com'
-        },
-        'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
-      );
-
-      toast.success('Message sent successfully!');
-      setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        message: ''
-      });
-    } catch (error) {
-      toast.error('Failed to send message. Please try again.');
-      console.error('EmailJS Error:', error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { id, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [id]: value
-    }));
-  };
-
   return (
     <section id="contact" className="bg-white py-24 sm:py-32">
-      <Toaster position="top-center" />
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Contact Us</h2>
           <p className="mt-6 text-lg leading-8 text-gray-600">
             Get in touch with our team for professional appraisal services
           </p>
-        </div>
-        <div className="mx-auto mt-16 max-w-2xl">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-              <div>
-                <label htmlFor="firstName" className="block text-sm font-semibold leading-6 text-gray-900">
-                  First name
-                </label>
-                <input
-                  type="text"
-                  id="firstName"
-                  required
-                  value={formData.firstName}
-                  onChange={handleChange}
-                  className="mt-2.5 block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
-                />
-              </div>
-              <div>
-                <label htmlFor="lastName" className="block text-sm font-semibold leading-6 text-gray-900">
-                  Last name
-                </label>
-                <input
-                  type="text"
-                  id="lastName"
-                  required
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  className="mt-2.5 block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
-                />
-              </div>
-              <div className="sm:col-span-2">
-                <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="mt-2.5 block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
-                />
-              </div>
-              <div className="sm:col-span-2">
-                <label htmlFor="message" className="block text-sm font-semibold leading-6 text-gray-900">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  required
-                  rows={4}
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="mt-2.5 block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-            <div className="mt-10">
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="block w-full rounded-md bg-primary px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:opacity-70 disabled:cursor-not-allowed"
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6">
+            <div className="inline-flex items-center justify-center gap-x-2 text-lg text-gray-700">
+              <Mail className="h-6 w-6 text-primary" />
+              <a 
+                href="mailto:contact@avaluamc.com" 
+                className="hover:text-primary transition-colors"
               >
-                {isSubmitting ? 'Sending...' : 'Send message'}
-              </button>
+                contact@avaluamc.com
+              </a>
             </div>
-          </form>
+            <div className="inline-flex items-center justify-center gap-x-2 text-lg text-gray-700">
+              <Phone className="h-6 w-6 text-primary" />
+              <a 
+                href="tel:+18889281312" 
+                className="hover:text-primary transition-colors"
+              >
+                (888) 928-1312
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
