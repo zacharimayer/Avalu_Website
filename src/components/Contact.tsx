@@ -1,5 +1,7 @@
 import React, { FormEvent, useState } from 'react';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+import toast, { Toaster } from 'react-hot-toast';
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -8,21 +10,38 @@ export function Contact() {
     email: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    
-    // Create mailto link with form data
-    const subject = `Contact Form Submission from ${formData.firstName} ${formData.lastName}`;
-    const body = `
-Name: ${formData.firstName} ${formData.lastName}
-Email: ${formData.email}
+    setIsSubmitting(true);
 
-Message:
-${formData.message}
-    `;
-    
-    window.location.href = `mailto:contact@avaluamc.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    try {
+      await emailjs.send(
+        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        {
+          from_name: `${formData.firstName} ${formData.lastName}`,
+          from_email: formData.email,
+          message: formData.message,
+          to_email: 'contact@avaluamc.com'
+        },
+        'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+      );
+
+      toast.success('Message sent successfully!');
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        message: ''
+      });
+    } catch (error) {
+      toast.error('Failed to send message. Please try again.');
+      console.error('EmailJS Error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -35,6 +54,7 @@ ${formData.message}
 
   return (
     <section id="contact" className="bg-white py-24 sm:py-32">
+      <Toaster position="top-center" />
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Contact Us</h2>
@@ -101,9 +121,10 @@ ${formData.message}
             <div className="mt-10">
               <button
                 type="submit"
-                className="block w-full rounded-md bg-primary px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                disabled={isSubmitting}
+                className="block w-full rounded-md bg-primary px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                Send message
+                {isSubmitting ? 'Sending...' : 'Send message'}
               </button>
             </div>
           </form>
