@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail } from 'lucide-react';
+import { Mail, Linkedin } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -17,6 +17,16 @@ export function Footer() {
             <Mail className="h-5 w-5 mr-2" />
             <a href="mailto:info@avaluamc.com" className="hover:text-primary transition-colors">
               info@avaluamc.com
+            </a>
+          </div>
+          <div className="flex items-center text-sm text-gray-400">
+            <a 
+              href="https://www.linkedin.com/company/avalu-amc/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-primary transition-colors"
+            >
+              <Linkedin className="h-5 w-5" />
             </a>
           </div>
         </div>
