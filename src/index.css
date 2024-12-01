@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply antialiased text-gray-900;
+}
+
+/* Add proper scroll margin for sections */
+section[id] {
+  scroll-margin-top: 96px; /* Increased from 6rem to account for the navbar height */
+}
