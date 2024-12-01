@@ -31,10 +31,11 @@ export function Navbar() {
             <button 
               onClick={() => handleNavClick('home')}
               className="flex items-center"
+              aria-label="Go to homepage"
             >
               <img 
                 src="https://i.ibb.co/8784jqK/logo-removebg.png" 
-                alt="Avalu AMC Logo" 
+                alt="Avalu Appraisals Logo" 
                 className="h-16 w-auto"
               />
             </button>
@@ -55,6 +56,7 @@ export function Navbar() {
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-gray-700 hover:text-primary"
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>

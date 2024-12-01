@@ -30,11 +30,11 @@ export function About() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            About Avalu AMC
+            About Avalu Appraisals
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            We are a leading appraisal management company committed to delivering exceptional 
-            valuation services through innovation, integrity, and excellence.
+            We are a leading property valuation company committed to delivering exceptional 
+            services through innovation, integrity, and excellence.
           </p>
         </div>
         <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">

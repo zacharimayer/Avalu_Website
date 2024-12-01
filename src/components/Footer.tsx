@@ -9,7 +9,7 @@ export function Footer() {
           <div className="flex items-center text-sm text-gray-400">
             <img 
               src="https://i.ibb.co/8784jqK/logo-removebg.png" 
-              alt="Avalu AMC Logo" 
+              alt="Avalu Appraisals Logo" 
               className="h-8 w-auto"
             />
           </div>
@@ -25,6 +25,7 @@ export function Footer() {
               target="_blank" 
               rel="noopener noreferrer"
               className="hover:text-primary transition-colors"
+              aria-label="Visit our LinkedIn page"
             >
               <Linkedin className="h-5 w-5" />
             </a>
@@ -32,7 +33,7 @@ export function Footer() {
         </div>
         <div className="mt-8 md:order-1 md:mt-0">
           <p className="text-center text-xs leading-5 text-gray-400">
-            &copy; 2025 Avalu Appraisal Management Company. All rights reserved.
+            &copy; 2025 Avalu Appraisal Management Company LLC. All rights reserved.
           </p>
         </div>
       </div>
