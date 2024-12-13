@@ -20,9 +20,10 @@ section {
 }
 
 section:not(#home) {
-  min-height: calc(100vh - 96px);
+  min-height: auto;
+  padding: 4rem 0;
 }
 
-.scroll-smooth {
-  scroll-behavior: smooth;
+#contact {
+  padding-bottom: 3rem;
 }
