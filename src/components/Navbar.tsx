@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 import { useScrollTo } from '../hooks/useScrollTo';
 import { useActiveSection } from '../hooks/useActiveSection';
 
@@ -8,8 +8,7 @@ export function Navbar() {
   const scrollTo = useScrollTo();
   const activeSection = useActiveSection();
 
-  const APPRAISER_SIGNUP = "https://avaluamc.spurams.com/AppraiserSelfRegistration.aspx";
-  const CLIENT_PORTAL = "https://avaluamc.spurams.com/ClientSelfRegistration.aspx";
+  const LOGIN_URL = "https://avaluamc.spurams.com/login.aspx";
 
   const handleNavClick = (sectionId: string) => {
     scrollTo(sectionId);
@@ -23,9 +22,9 @@ export function Navbar() {
   };
 
   return (
-    <nav className="bg-white shadow-sm fixed w-full z-10">
+    <nav className="bg-white shadow-sm fixed w-full z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-24 items-center">
+        <div className="flex h-24 items-center justify-between">
           {/* Logo - Left */}
           <div className="flex-shrink-0">
             <button 
@@ -42,7 +41,7 @@ export function Navbar() {
           </div>
           
           {/* Navigation - Center */}
-          <div className="hidden md:flex flex-1 justify-center items-center">
+          <div className="hidden md:flex flex-1 justify-center items-center mx-8">
             <div className="flex items-center space-x-8">
               <button onClick={() => handleNavClick('home')} className={getLinkClasses('home')}>Home</button>
               <button onClick={() => handleNavClick('services')} className={getLinkClasses('services')}>Services</button>
@@ -51,7 +50,20 @@ export function Navbar() {
             </div>
           </div>
 
-          {/* Mobile menu button - Right */}
+          {/* Right side button */}
+          <div className="hidden md:flex items-center">
+            <a
+              href={LOGIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center rounded-full bg-primary py-3 px-6 text-sm font-semibold text-white hover:bg-primary/90 active:bg-primary/80 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            >
+              Login
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </a>
+          </div>
+
+          {/* Mobile menu button */}
           <div className="flex-shrink-0 md:hidden">
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -74,20 +86,13 @@ export function Navbar() {
             <button onClick={() => handleNavClick('contact')} className={`block w-full text-left px-3 py-2 ${getLinkClasses('contact')}`}>Contact</button>
             <div className="flex flex-col space-y-2 px-3 pt-4">
               <a
-                href={APPRAISER_SIGNUP}
+                href={LOGIN_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-md border border-primary px-4 py-2 text-sm font-medium text-primary hover:bg-primary hover:text-white transition-colors"
+                className="group inline-flex items-center justify-center rounded-full bg-primary py-3 px-6 text-sm font-semibold text-white hover:bg-primary/90 active:bg-primary/80 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
-                Appraiser Registration
-              </a>
-              <a
-                href={CLIENT_PORTAL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary/90 transition-colors"
-              >
-                Client Portal
+                Login
+                <ArrowRight className="ml-2 h-4 w-4" />
               </a>
             </div>
           </div>
