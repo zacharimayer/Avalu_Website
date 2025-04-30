@@ -23,10 +23,10 @@ export function Contact() {
             <div className="inline-flex items-center justify-center gap-x-2 text-lg text-gray-700">
               <Phone className="h-6 w-6 text-primary" />
               <a 
-                href="tel:+18889281312" 
+                href="tel:+17862588479" 
                 className="hover:text-primary transition-colors"
               >
-                (888) 928-1312
+                (786) 258-8479
               </a>
             </div>
           </div>

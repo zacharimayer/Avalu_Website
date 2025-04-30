@@ -17,6 +17,24 @@ const initialFormData: FormData = {
   message: ''
 };
 
+const toastStyle = {
+  style: {
+    background: '#fff',
+    color: '#333',
+    padding: '16px',
+    borderRadius: '8px',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+  },
+  icon: (
+    <img
+      src="https://i.ibb.co/8784jqK/logo-removebg.png"
+      alt="Avalu Logo"
+      style={{ width: '24px', height: '24px' }}
+    />
+  ),
+  duration: 4000,
+};
+
 export function useContactForm() {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -38,10 +56,10 @@ export function useContactForm() {
         EMAILJS_CONFIG.PUBLIC_KEY
       );
 
-      toast.success('Message sent successfully!');
+      toast.success('Message sent successfully!', toastStyle);
       setFormData(initialFormData);
     } catch (error) {
-      toast.error('Failed to send message. Please try again.');
+      toast.error('Failed to send message. Please try again.', toastStyle);
       console.error('EmailJS Error:', error);
     } finally {
       setIsSubmitting(false);
