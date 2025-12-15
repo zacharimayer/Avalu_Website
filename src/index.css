@@ -6,13 +6,28 @@ body {
   @apply antialiased text-gray-900;
 }
 
+@keyframes gradient {
+  0%, 100% {
+    background-size: 200% 200%;
+    background-position: left center;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: right center;
+  }
+}
+
+.animate-gradient {
+  animation: gradient 8s ease infinite;
+}
+
 html {
   scroll-behavior: smooth !important;
-  scroll-padding-top: 96px;
+  scroll-padding-top: 80px;
 }
 
 section {
-  scroll-margin-top: 96px;
+  scroll-margin-top: 80px;
 }
 
 #home {

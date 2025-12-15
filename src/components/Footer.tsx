@@ -33,7 +33,7 @@ export function Footer() {
         </div>
         <div className="mt-8 md:order-1 md:mt-0">
           <p className="text-center text-xs leading-5 text-gray-400">
-            &copy; 2025 Avalu Appraisal Management Company LLC. All rights reserved.
+            &copy; 2026 Avalu Appraisal Management Company LLC. All rights reserved.
           </p>
         </div>
       </div>

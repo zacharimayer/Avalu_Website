@@ -1,54 +1,51 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 export function Hero() {
   const APPRAISER_SIGNUP = "https://avaluamc.spurams.com/AppraiserSelfRegistration.aspx";
   const CLIENT_PORTAL = "https://avaluamc.spurams.com/ClientSelfRegistration.aspx";
 
   return (
-    <section id="home" className="relative min-h-screen">
-      <div 
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: 'url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80")',
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat'
-        }}
-      >
-        <div className="absolute inset-0 bg-gray-900/70 mix-blend-multiply" />
+    <section id="home" className="relative min-h-screen bg-black text-white overflow-hidden">
+      <div className="absolute inset-0">
+        <img
+          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
+          alt="City skyline"
+          className="w-full h-full object-cover opacity-40"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black" />
       </div>
-      
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 pb-16 text-center lg:pt-48">
-        <h1 className="mx-auto max-w-4xl font-display text-5xl font-medium tracking-tight text-white sm:text-7xl">
-          Intelligent{' '}
-          <span className="relative whitespace-nowrap">
-            <span className="relative text-primary">Property Valuation</span>
-          </span>{' '}
-          Solutions
-        </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg tracking-tight text-gray-100">
-          Revolutionizing real estate appraisals with cutting-edge technology and unmatched expertise. Fast, accurate, and fully compliant.
-        </p>
-        <div className="mt-10 flex justify-center gap-x-6">
-          <a
-            href={APPRAISER_SIGNUP}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center justify-center rounded-full border border-white py-3 px-6 text-sm font-semibold text-white hover:bg-white/10 active:bg-white/20 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-          >
-            Appraiser Registration
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </a>
-          <a
-            href={CLIENT_PORTAL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center justify-center rounded-full bg-primary py-3 px-6 text-sm font-semibold text-white hover:bg-primary/90 active:bg-primary/80 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-          >
-            Client Portal
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </a>
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center py-32">
+        <div className="max-w-4xl">
+          <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold leading-none mb-8">
+            Intelligent Property
+            <span className="block text-primary mt-2">Valuation Solutions</span>
+          </h1>
+
+          <p className="text-xl sm:text-2xl text-gray-300 leading-relaxed mb-12 max-w-3xl">
+            Advanced technology platform trusted by financial institutions for accurate, compliant, and intelligent property valuations.
+          </p>
+
+          <div className="flex flex-wrap gap-4">
+            <a
+              href={CLIENT_PORTAL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center rounded-lg bg-primary py-4 px-8 text-base font-semibold text-black hover:bg-primary/90 transition-all"
+            >
+              Access Platform
+              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            </a>
+            <a
+              href={APPRAISER_SIGNUP}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center rounded-lg border-2 border-white/30 py-4 px-8 text-base font-semibold text-white hover:bg-white/10 backdrop-blur-sm transition-all"
+            >
+              Join Our Network
+            </a>
+          </div>
         </div>
       </div>
     </section>
